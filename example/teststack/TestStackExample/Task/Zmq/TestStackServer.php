@@ -6,9 +6,13 @@
  * Time: 6:56 PM
  * To change this template use File | Settings | File Templates.
  */
-namespace Task\Zmq;
+namespace TestStackExample\Task\Zmq;
 
-class TestStackServer extends \Task\AbstractTask
+use \TestStackExample\Task\AbstractTask;
+use \TestStackExample\Api\V1\TestStack\Dispatcher\DispatcherZmq;
+
+class TestStackServer
+    extends AbstractTask
 {
 
     // php runtask.php Zmq.TestStackServer
@@ -19,13 +23,12 @@ class TestStackServer extends \Task\AbstractTask
     public function run()
     {
         $isDebugEnabled = true;
-        $uri            = 'tcp://127.0.0.1:5555';
+        $uri            = 'tcp://127.0.0.1:5556';
 
         $exception = null;
         $startTS   = microtime(true);
         try {
-            $dispatcher =
-                new \Api\V1\TestStack\Dispatcher\DispatcherZmq();
+            $dispatcher = new DispatcherZmq();
             $dispatcher->init();
             $dispatcher->setUri($uri);
             $dispatcher->setIsDebugEnabled($isDebugEnabled === true);

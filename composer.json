@@ -18,11 +18,13 @@
     ],
     "autoload":{
         "psr-0":{
-            "Processus\\":"src"
+            "Processus\\":"src",
+            "TestStackExample\\":"example/teststack"
         }
     },
     "require":{
-        "php":">=5.3.3"
+        "php":">=5.3.3",
+        "symfony/class-loader": "2.1.*"
     },
     "minimum-stability":"dev"
 }

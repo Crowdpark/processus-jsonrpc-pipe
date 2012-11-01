@@ -6,7 +6,7 @@
  * Time: 1:54 PM
  * To change this template use File | Settings | File Templates.
  */
-namespace Api\V1\TestStack\Modules;
+namespace TestStackExample\Api\V1\TestStack\Modules;
 use Processus\Rpc\Json\Base\RpcUtil;
 
 class DebugModule

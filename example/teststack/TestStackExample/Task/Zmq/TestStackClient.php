@@ -7,9 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Task\Zmq;
+namespace TestStackExample\Task\Zmq;
 
-class TestStackClient extends \Task\AbstractTask
+use TestStackExample\Task\AbstractTask;
+
+class TestStackClient
+    extends AbstractTask
 {
 
     // php runtask.php Zmq.TestStackClient
@@ -20,7 +23,7 @@ class TestStackClient extends \Task\AbstractTask
     public function run()
     {
         $batchItemCount = 10;
-        $uri            = 'tcp://127.0.0.1:5555';
+        $uri            = 'tcp://127.0.0.1:5556';
         $rpcData        = array(
             "id"     => 1,
             "method" => 'TestStack.Test.ping',

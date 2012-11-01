@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Task;
+namespace TestStackExample\Task;
+
 class AbstractTask
 {
-
 
     /**
      *

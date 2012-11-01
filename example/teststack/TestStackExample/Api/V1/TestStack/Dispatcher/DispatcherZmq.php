@@ -6,9 +6,9 @@
  * Time: 6:26 PM
  * To change this template use File | Settings | File Templates.
  */
-namespace Api\V1\TestStack\Dispatcher;
+namespace TestStackExample\Api\V1\TestStack\Dispatcher;
 
-use Api\V1\TestStack\Modules\GatewayModule;
+use TestStackExample\Api\V1\TestStack\Modules\GatewayModule;
 
 class DispatcherZmq
     extends \Processus\Rpc\Json\Dispatcher\Zmq\DispatcherZmq
@@ -16,7 +16,7 @@ class DispatcherZmq
 
 
     /**
-     * @return \Api\V1\TestStack\Modules\GatewayModule
+     * @return \TestStackExample\Api\V1\TestStack\Modules\GatewayModule
      */
     public function newGateway()
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\V1\TestStack\Service;
+namespace TestStackExample\Api\V1\TestStack\Service;
 
 class Test
-    extends \Api\V1\TestStack\Base\BaseService
+    extends \TestStackExample\Api\V1\TestStack\Base\BaseService
 {
     /**
      * @return bool

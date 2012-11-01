@@ -6,6 +6,7 @@
  * Time: 10:14
  * To change this template use File | Settings | File Templates.
  */
+namespace TestStackExample;
 
 class Bootstrap
 {
@@ -48,6 +49,7 @@ class Bootstrap
      * @param  string $className
      * @return bool
      */
+    /*
     public function phpAutoLoader($className)
     {
         // quick-n-dirty ....
@@ -87,7 +89,7 @@ class Bootstrap
 
         return false;
     }
-
+    */
 
 
 
@@ -135,13 +137,13 @@ class Bootstrap
 
         // turn on error exceptions
         set_error_handler(function($errno, $errstr, $errfile, $errline){
-            throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+            throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
         });
 
         // try catch fatal errors
         register_shutdown_function(array($this, 'phpShutdownHandler'));
 
-        spl_autoload_register(array($this, 'phpAutoLoader'));
+       // spl_autoload_register(array($this, 'phpAutoLoader'));
 
         ini_set("display_errors", false);
     }

@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  *
  */
-namespace Api\V1\TestStack\Modules;
+namespace TestStackExample\Api\V1\TestStack\Modules;
 
 class ProcessorModule
     extends

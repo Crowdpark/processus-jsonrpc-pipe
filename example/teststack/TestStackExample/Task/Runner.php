@@ -1,28 +1,43 @@
 <?php
 
-namespace Task;
+namespace TestStackExample\Task;
 
 class Runner
 {
+    /**
+     * @var Runner
+     */
+    private static $_instance;
 
     /**
      * @var int|null
      */
-    protected static $_pid = null;
+    protected $_pid = null;
 
+    /**
+     * @return Runner
+     */
+    public static function getInstance()
+    {
+        if(!(self::$_instance instanceof self)) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
+    }
 
 
     /**
      * Runs a task specified on the commandline (CLI)
      *
-     * @static
+     *
      * @return void
      */
-    public static function run()
+    public function run()
     {
         echo PHP_EOL . ' =========== '.__METHOD__.' BEGIN =========== ';
 
-        self::$_pid = getmypid();
+        $this->_pid = getmypid();
         $command          = null;
 
         $args = $_SERVER['argv'];
@@ -43,7 +58,9 @@ class Runner
         }
 
 
-        $taskClassName = 'Task\\'
+        $reflectionClass = new \ReflectionClass($this);
+
+        $taskClassName = $reflectionClass->getNamespaceName().'\\'
             .str_replace(array('.'), array('\\'), $taskName);
         $taskClassExists = false;
         try {
@@ -61,9 +78,13 @@ class Runner
             );
         }
         $taskInstance = new $taskClassName();
-        if(!($taskInstance instanceof AbstractTask)) {
+        if(!
+            ($taskInstance
+                instanceof AbstractTask)
+        ) {
             throw new \Exception(
-                'Invalid TaskClass! TaskClass must be instance of AbstractTask! '
+                'Invalid TaskClass!'
+                    . ' TaskClass must be instance of AbstractTask! '
                     . __METHOD__
                     . '   '. json_encode(array(
                         'taskName' =>$taskName,

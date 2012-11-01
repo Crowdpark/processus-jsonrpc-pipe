@@ -6,7 +6,7 @@
  * Time: 2:38 PM
  * To change this template use File | Settings | File Templates.
  */
-namespace Api\V1\TestStack\Modules;
+namespace TestStackExample\Api\V1\TestStack\Modules;
 
 class RouterModule
     extends
@@ -21,7 +21,8 @@ class RouterModule
         array(
             'serviceName' => 'TestStack.Test',
             'className'
-                                            => 'Api\\V1\\TestStack\\Service\\Test',
+
+                => 'TestStackExample\\Api\\V1\\TestStack\\Service\\Test',
             'isValidateMethodParamsEnabled' => true,
             'classMethodFilter'             => array(
                 'allow' => array(
