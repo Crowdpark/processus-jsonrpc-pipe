@@ -1,0 +1,28 @@
+{
+    "name":"processus/jsonrpcpipe",
+    "type":"library",
+    "description":"json rpc pipe",
+    "keywords":["library", "json", "rpc"],
+    "homepage":"http://github.com/Crowdpark/processus-jsonrpc-pipe",
+    "license":"MIT",
+    "support":{
+        "issues":"https://github.com/Crowdpark/processus-jsonrpc-pipe/issues"
+    },
+    "authors":[
+        {
+            "name":"Sebastian Schmidt",
+            "email":"sebastian.schmidt@crowdpark.com",
+            "homepage":"http://www.crowdpark.com",
+            "role":"Developer"
+        }
+    ],
+    "autoload":{
+        "psr-0":{
+            "Processus\\":"src"
+        }
+    },
+    "require":{
+        "php":">=5.3.3"
+    },
+    "minimum-stability":"dev"
+}
