@@ -9,20 +9,29 @@
 
 // ========== bootstrap ======
 
-    // @TODO: Bootstrap ,autoloader etc.
 require_once dirname(__FILE__) . '/../../../Bootstrap.php';
 
 Bootstrap::getInstance()
-    ->run();
+    ->init();
 
 // ========== run ============
+
+$mockEnabled = false;
+$mockRequest = array(
+    'method' => 'TestStack.Test.ping',
+    'params' => array(),
+);
+
 
 use Api\V1\TestStack\Modules\GatewayModule;
 
 $gtw = new \Api\V1\TestStack\Modules\GatewayModule();
 $gtw->init();
-$gtw->setIsAutoFetchRequestTextEnabled(true);
+$gtw->setIsAutoFetchRequestTextEnabled(false);
 $gtw->setIsAutoEmitResponseEnabled(true);
 $gtw->setIsDebugEnabled(true);
-
+if($mockEnabled) {
+    $gtw->setIsAutoFetchRequestTextEnabled(false);
+    $gtw->setRawRequestData($mockRequest);
+}
 $gtw->run();
