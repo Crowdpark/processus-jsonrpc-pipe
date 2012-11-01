@@ -22,12 +22,11 @@ $mockRequest = array(
     'params' => array(),
 );
 
-
 use Api\V1\TestStack\Modules\GatewayModule;
 
 $gtw = new \Api\V1\TestStack\Modules\GatewayModule();
 $gtw->init();
-$gtw->setIsAutoFetchRequestTextEnabled(false);
+$gtw->setIsAutoFetchRequestTextEnabled(true);
 $gtw->setIsAutoEmitResponseEnabled(true);
 $gtw->setIsDebugEnabled(true);
 if($mockEnabled) {
