@@ -84,6 +84,8 @@ class DebugModule extends BaseModule
         if (!$this->getIsDebugEnabled()) {
             $response->unsetReadyDataKey('debug');
         } else {
+            // you may want to add debug info to rpc.response
+            /* EXAMPLE
             $readyDataDebug = $response->getReadyDataKey('debug');
             $readyDataDebug = RpcUtil::arrayEnsure(
                 $readyDataDebug,
@@ -104,6 +106,7 @@ class DebugModule extends BaseModule
                 );
             }
             $response->setReadyDataKey('debug', $readyDataDebug);
+            */
         }
 
         return $result;

@@ -32,7 +32,7 @@ class ProcessorModule
         ),
         'debugModule'    => array(
             'config' => array(
-                'isEnabled' => true,
+                'isEnabled' => false,
             ),
         ),
         'authModule'     => array(

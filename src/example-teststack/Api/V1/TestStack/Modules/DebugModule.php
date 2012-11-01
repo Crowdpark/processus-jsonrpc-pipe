@@ -7,10 +7,57 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace Api\V1\TestStack\Modules;
+use Processus\JsonRpc\Base\RpcUtil;
 
 class DebugModule
     extends
     \Processus\JsonRpc\Modules\Debug\DebugModule
 {
+
+
+    /**
+     * @return DebugModule
+     */
+    public function handleResponseReadyData()
+    {
+        $result = $this;
+
+        if (!$this->getIsEnabled()) {
+
+            return $result;
+        }
+
+        $rpc       = $this->getRpc();
+        $response  = $rpc->getResponse();
+        $readyData = $response->getReadyData();
+
+        // readyData.debug
+        if (!$this->getIsDebugEnabled()) {
+            $response->unsetReadyDataKey('debug');
+        } else {
+            $readyDataDebug = $response->getReadyDataKey('debug');
+            $readyDataDebug = RpcUtil::arrayEnsure(
+                $readyDataDebug,
+                array(
+                    'demoDebugModuleMessage' => 'foo ' . __METHOD__,
+                    'isDebugEnabled'         => true,
+                    'rpc'                    => array(
+                        'request'      => $rpc->getRequest()->getData(),
+                        'result'       => $rpc->getResponse()->getResult(),
+                        'hasException' => $rpc->getResponse()->hasException(),
+                    ),
+                )
+            );
+            if ($response->hasException()) {
+                $readyDataDebug['errorInfo'] = RpcUtil::exceptionAsArray(
+                    $response->getException(),
+                    true
+                );
+            }
+            $response->setReadyDataKey('debug', $readyDataDebug);
+        }
+
+        return $result;
+    }
 
 }
