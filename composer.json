@@ -25,6 +25,5 @@
     "require":{
         "php":">=5.3.3",
         "symfony/class-loader": "2.1.*"
-    },
-    "minimum-stability":"dev"
+    }
 }
